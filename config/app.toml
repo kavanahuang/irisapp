@@ -1,2 +1,10 @@
 [listen]
-    port = ":8001" # App listen port.
+    port = ":8001"      # App listen port.
+
+[resource]
+    path = "/static"    # Handle http request dir.
+    dir = "static"      # Handle local dir.
+
+[view]
+    dir = "view"        # View dir.
+    types = ".html"     # Template type.

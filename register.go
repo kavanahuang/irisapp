@@ -14,6 +14,7 @@ import (
 	"github.com/kataras/iris/v12/middleware/recover"
 	"github.com/kavanahuang/config"
 	"github.com/kavanahuang/log"
+	"github.com/kavanahuang/system"
 )
 
 type injection struct{}
@@ -24,6 +25,7 @@ var Inject = new(injection)
 func Loader(app *iris.Application) *iris.Application {
 	Inject.LogService()
 	Inject.DebugService(app)
+	Inject.ResourceService(app)
 	Inject.ViewService(app)
 	Inject.MiddlewareService(app)
 
@@ -38,9 +40,22 @@ func (i *injection) LogService() {
 	}
 }
 
+// Handle static resource dir.
+func (i *injection) ResourceService(app *iris.Application) {
+	cfg := config.Toml.NewToml("config", "app.toml")
+	path := cfg.Read("resource.path").ToStr()
+	dir := cfg.Read("resource.dir").ToStr()
+	dirPath := system.GetDirPath(dir)
+	app.HandleDir(path, dirPath)
+}
+
 // Injection view service
 func (i *injection) ViewService(app *iris.Application) {
-	tmpl := iris.HTML("../view", ".html")
+	cfg := config.Toml.NewToml("config", "app.toml")
+	dir := cfg.Read("view.dir").ToStr()
+	types := cfg.Read("view.types").ToStr()
+	dirPath := system.GetDirPath(dir)
+	tmpl := iris.HTML(dirPath, types)
 	app.RegisterView(tmpl)
 }
 

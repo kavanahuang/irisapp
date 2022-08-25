@@ -14,6 +14,8 @@ import (
 // Iris app call example.
 func main() {
 	newApp := irisapp.App.New()
+	// Handle static resource dir.
+	// newApp.Apply.HandleDir("/static", "../static")
 	router.AppRoute.NewRouter(newApp.Apply)
 	newApp.Run(newApp.Apply)
 }
