@@ -17,14 +17,6 @@ type IndexController struct {
 }
 
 func (index *IndexController) IndexAction(ctx iris.Context) error {
-	/*
-		viewPage := "index.html"
-		err := ctx.View(viewPage)
-
-		if err != nil {
-			log.Logs.Error("Not found view: " + viewPage)
-		}
-	*/
 	status.OK.Data = "index"
 	_, err := ctx.JSON(status.OK)
 	return err

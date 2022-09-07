@@ -9,7 +9,7 @@ package irisapp
 import (
 	"github.com/kataras/iris/v12"
 	"github.com/kavanahuang/config"
-	"github.com/kavanahuang/log"
+	"github.com/kavanahuang/logs"
 )
 
 type apps struct {
@@ -32,5 +32,5 @@ func (app *apps) Run(newApp *iris.Application) {
 	// Begin listening for the application
 	port := config.Toml.NewToml("config", "app.toml").Zone("listen").Get("port").AtStr()
 	err := newApp.Run(iris.Addr(port), iris.WithoutServerError(iris.ErrServerClosed))
-	log.Logs.Error("App service is down, closed port: "+port, err)
+	logs.Error("App service is down, closed port: "+port, err)
 }

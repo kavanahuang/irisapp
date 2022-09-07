@@ -13,7 +13,7 @@ import (
 	"github.com/kataras/iris/v12/middleware/logger"
 	"github.com/kataras/iris/v12/middleware/recover"
 	"github.com/kavanahuang/config"
-	"github.com/kavanahuang/log"
+	"github.com/kavanahuang/logs"
 	"github.com/kavanahuang/system"
 )
 
@@ -34,7 +34,7 @@ func Loader(app *iris.Application) *iris.Application {
 
 // Injection logs service
 func (i *injection) LogService() {
-	err := log.BootLogger()
+	err := logs.BootLogger()
 	if err != nil {
 		fmt.Println(err)
 	}

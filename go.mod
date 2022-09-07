@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/kataras/iris/v12 v12.1.8
 	github.com/kavanahuang/config v0.0.0-20220815163040-88b0885f2e80
-	github.com/kavanahuang/log v0.0.0-20220812103622-ad8af3a91296
+	github.com/kavanahuang/logs v0.0.0-20220830151853-944629158da5
 	github.com/kavanahuang/status v0.0.0-20220816112107-e59569d0e1be
 	github.com/kavanahuang/system v0.0.0-20220825134821-d2e488d93a96
 )
@@ -35,6 +35,7 @@ require (
 	github.com/kataras/pio v0.0.8 // indirect
 	github.com/kataras/sitemap v0.0.5 // indirect
 	github.com/kavanahuang/common v0.0.0-20220812103900-cc6ab93839fa // indirect
+	github.com/kavanahuang/log v0.0.0-20220812103622-ad8af3a91296 // indirect
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.3 // indirect
